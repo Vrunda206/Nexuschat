@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusChat — Smart Collaboration</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMzOGJkZjg7c3RvcC1vcGFjaXR5OjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNTYzZWI7c3RvcC1vcGFjaXR5OjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjAgODBMMjAgMzBDMjAgMjAgMzAgMjAgNDAgMjBMNTAgMjBMNTAgNDBMNDAgNDBMNDAgODBaIiBmaWxsPSJ1cmwoI2cpIi8+PHBhdGggZD0iTTgwIDIwTDgwIDcwQzgwIDgwIDcwIDgwIDYwIDgwTDUwIDgwTDUwIDYwTDYwIDYwTDYwIDIwWiIgZmlsbD0idXJsKCNnKSIvPjxwYXRoIGQ9Ik0zNSA0MGgzMGM1IDAgOCAzIDggOHYxNWMwIDUgLTMgOCAtOCA4aC01djEwbC0xMCAtMTBoLTEwYy01IDAgLTggLTMgLTggLTh2LTE1YzAgLTUgMyAtOCA4IC04eiIgZmlsbD0iIzM4YmRmOCIvPjxjaXJjbGUgY3g9IjQzIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg=="
+    type="image/x-icon">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <!-- ══ AUTH SCREEN ══════════════════════════════════════ -->
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div style="display:flex; justify-content:center; align-items:center; margin-bottom: 20px;">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMzOGJkZjg7c3RvcC1vcGFjaXR5OjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNTYzZWI7c3RvcC1vcGFjaXR5OjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjAgODBMMjAgMzBDMjAgMjAgMzAgMjAgNDAgMjBMNTAgMjBMNTAgNDBMNDAgNDBMNDAgODBaIiBmaWxsPSJ1cmwoI2cpIi8+PHBhdGggZD0iTTgwIDIwTDgwIDcwQzgwIDgwIDcwIDgwIDYwIDgwTDUwIDgwTDUwIDYwTDYwIDYwTDYwIDIwWiIgZmlsbD0idXJsKCNnKSIvPjxwYXRoIGQ9Ik0zNSA0MGgzMGM1IDAgOCAzIDggOHYxNWMwIDUgLTMgOCAtOCA4aC01djEwbC0xMCAtMTBoLTEwYy01IDAgLTggLTMgLTggLTh2LTE1YzAgLTUgMyAtOCA4IC04eiIgZmlsbD0iIzM4YmRmOCIvPjxjaXJjbGUgY3g9IjQzIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg=="
+            alt="Logo"
+            style="width: 50px; height: 50px; margin-right: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);">
+          <h1 style="margin: 0;">NexusChat</h1>
+        </div>
+        <p>Smart Real-Time Collaboration</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="switchTab('login')">Login</button>
+        <button class="auth-tab" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <div id="auth-error" class="auth-error hidden"></div>
+
+      <form id="auth-form" class="auth-form">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="auth-username" placeholder="Enter username" autocomplete="off" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="auth-password" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn-primary" id="auth-submit-btn">Login</button>
+      </form>
+
+      <p class="auth-footer">NexusChat · Real-time · AI-powered · Secure</p>
+    </div>
+  </div>
+
+  <!-- ══ MAIN APP ══════════════════════════════════════════ -->
+  <div id="app-screen" class="app-screen hidden">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+      <button class="hamburger-btn" onclick="toggleSidebar()" title="Toggle Menu">☰</button>
+      <div class="logo" style="display:flex; align-items:center;">
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMzOGJkZjg7c3RvcC1vcGFjaXR5OjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNTYzZWI7c3RvcC1vcGFjaXR5OjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjAgODBMMjAgMzBDMjAgMjAgMzAgMjAgNDAgMjBMNTAgMjBMNTAgNDBMNDAgNDBMNDAgODBaIiBmaWxsPSJ1cmwoI2cpIi8+PHBhdGggZD0iTTgwIDIwTDgwIDcwQzgwIDgwIDcwIDgwIDYwIDgwTDUwIDgwTDUwIDYwTDYwIDYwTDYwIDIwWiIgZmlsbD0idXJsKCNnKSIvPjxwYXRoIGQ9Ik0zNSA0MGgzMGM1IDAgOCAzIDggOHYxNWMwIDUgLTMgOCAtOCA4aC01djEwbC0xMCAtMTBoLTEwYy01IDAgLTggLTMgLTggLTh2LTE1YzAgLTUgMyAtOCA4IC04eiIgZmlsbD0iIzM4YmRmOCIvPjxjaXJjbGUgY3g9IjQzIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg=="
+          alt="Logo" style="width: 28px; height: 28px; margin-right: 10px; border-radius: 6px;">
+        Nexus<span>Chat</span>
+      </div>
+      <div class="topbar-center" id="typing-indicator"></div>
+      <div class="topbar-right">
+        <div class="status-dot"></div>
+        <div class="user-chip" id="current-user-chip">
+          <div class="avatar av-blue" id="current-avatar">U</div>
+          <span id="current-username">User</span>
+        </div>
+        <button class="icon-btn" onclick="logout()" title="Logout">🚪</button>
+      </div>
+    </header>
+
+    <div class="main">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h3>Channels</h3>
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search..." id="msg-search" oninput="searchMessages()">
+          </div>
+        </div>
+
+        <div class="room-list">
+          <div class="room-section-label">Public Rooms</div>
+
+          <div class="room-item active" onclick="joinRoom('general', this)">
+            <div class="room-icon">💼</div>
+            <div class="room-info">
+              <div class="room-name">Operations</div>
+              <div class="room-last" id="preview-general">Welcome to Operations!</div>
+            </div>
+            <span class="badge hidden" id="badge-general">0</span>
+          </div>
+
+          <div class="room-item" onclick="joinRoom('tech', this)">
+            <div class="room-icon">💻</div>
+            <div class="room-info">
+              <div class="room-name">Engineering</div>
+              <div class="room-last" id="preview-tech">Tech discussions</div>
+            </div>
+            <span class="badge hidden" id="badge-tech">0</span>
+          </div>
+
+          <div class="room-item" onclick="joinRoom('random', this)">
+            <div class="room-icon">📈</div>
+            <div class="room-info">
+              <div class="room-name">Management</div>
+              <div class="room-last" id="preview-random">Project updates!</div>
+            </div>
+            <span class="badge hidden" id="badge-random">0</span>
+          </div>
+
+          <div class="room-item" onclick="joinRoom('announcements', this)">
+            <div class="room-icon">📢</div>
+            <div class="room-info">
+              <div class="room-name">Announcements</div>
+              <div class="room-last" id="preview-announcements">Important updates</div>
+            </div>
+            <span class="badge hidden" id="badge-announcements">0</span>
+          </div>
+        </div>
+
+        <!-- Online Users -->
+        <div class="online-users">
+          <h3>Online Now</h3>
+          <div id="online-users-list">
+            <div class="user-row">
+              <div class="avatar av-blue" style="width:28px;height:28px;font-size:11px;">?</div>
+              <div class="user-row-info">
+                <div class="user-row-name">Connecting...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Chat Area -->
+      <section class="chat-area">
+
+        <!-- Chat Header -->
+        <div class="chat-header">
+          <div class="chat-header-icon" id="room-icon">💬</div>
+          <div class="chat-header-info">
+            <h2 id="room-name-display">Operations</h2>
+            <p id="room-member-count">Loading...</p>
+          </div>
+          <div class="chat-header-actions">
+            <button class="icon-btn" onclick="toggleNotifications()" title="Notifications" id="notif-btn">🔔</button>
+            <button class="icon-btn" title="Members">👥</button>
+            <button class="icon-btn" onclick="toggleDarkMode()" title="Toggle theme">🌙</button>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="messages" id="messages-container"></div>
+
+        <!-- AI Suggestions Bar -->
+        <div class="suggestions-bar hidden" id="suggestions-bar">
+          <span class="suggestions-label">🧠 AI Suggestions:</span>
+          <div class="suggestions-list" id="suggestions-list"></div>
+          <button class="suggestions-close" onclick="hideSuggestions()">✕</button>
+        </div>
+
+        <!-- File Preview -->
+        <div class="file-preview hidden" id="file-preview">
+          <div class="file-preview-info">
+            <span id="file-preview-name"></span>
+            <span id="file-preview-size" class="file-size"></span>
+          </div>
+          <button onclick="clearFilePreview()" class="file-preview-remove">✕</button>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+          <label class="attach-btn" for="file-input" title="Attach file">📎</label>
+          <input type="file" id="file-input" accept="image/*,.pdf,.doc,.docx,.txt" style="display:none"
+            onchange="handleFileSelect(event)">
+
+          <input type="text" id="message-input" class="message-input" placeholder="Message #Operations..."
+            autocomplete="off" onkeydown="handleInputKey(event)" oninput="handleTyping()">
+
+          <button class="emoji-btn" onclick="toggleEmojiPicker()" title="Emoji">😊</button>
+          <button class="voice-btn" id="voice-btn" onclick="toggleVoiceRecord()"
+            title="Click to record, click again to send"
+            style="background:none; border:none; font-size:20px; cursor:pointer;">🎤</button>
+          <button class="ai-btn" onclick="getAISuggestions()" title="AI Smart Reply">🧠</button>
+          <button class="send-btn" onclick="sendMessage()" title="Send">➤</button>
+
+          <!-- Emoji Picker -->
+          <div class="emoji-picker hidden" id="emoji-picker">
+            <div class="emoji-grid">
+              👍 👎 ❤️ 😂 😮 😢 🔥 🎉 ✅ 💡 🤔 👏 🙏 💪 🎯 ⭐
+              😀 😎 🤩 😊 🥳 🤝 👋 💬 📁 🖥️ 🚀 ⚡ 💻 📱 🔧 🎨
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /main -->
+  </div><!-- /app-screen -->
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+
+</html>

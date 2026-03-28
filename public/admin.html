@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusChat — Admin Control Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMzOGJkZjg7c3RvcC1vcGFjaXR5OjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNTYzZWI7c3RvcC1vcGFjaXR5OjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjAgODBMMjAgMzBDMjAgMjAgMzAgMjAgNDAgMjBMNTAgMjBMNTAgNDBMNDAgNDBMNDAgODBaIiBmaWxsPSJ1cmwoI2cpIi8+PHBhdGggZD0iTTgwIDIwTDgwIDcwQzgwIDgwIDcwIDgwIDYwIDgwTDUwIDgwTDUwIDYwTDYwIDYwTDYwIDIwWiIgZmlsbD0idXJsKCNnKSIvPjxwYXRoIGQ9Ik0zNSA0MGgzMGM1IDAgOCAzIDggOHYxNWMwIDUgLTMgOCAtOCA4aC01djEwbC0xMCAtMTBoLTEwYy01IDAgLTggLTMgLTggLTh2LTE1YzAgLTUgMyAtOCA4IC04eiIgZmlsbD0iIzM4YmRmOCIvPjxjaXJjbGUgY3g9IjQzIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==" type="image/x-icon">
+    <style>
+        /* Admin specific advanced styling overlay on top of existing style.css */
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #f1f5f9;
+            margin: 0;
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .admin-dashboard {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+        .admin-sidebar {
+            width: 250px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 5px 0 20px rgba(0,0,0,0.3);
+        }
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #38bdf8;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+        .admin-brand img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+            transform: translateX(5px);
+        }
+        .admin-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        .header-top h1 {
+            margin: 0;
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+        }
+        .to-app {
+            background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
+            color: white;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+        }
+        .to-app:hover {
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+            transform: translateY(-2px);
+        }
+        .data-panel {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        .data-panel.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+        th, td {
+            text-align: left;
+            padding: 16px 20px;
+        }
+        th {
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        tr {
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.2s;
+        }
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: scale(1.01);
+        }
+        td {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        tr td:first-child { border-radius: 12px 0 0 12px; border-left: 1px solid rgba(255, 255, 255, 0.05); }
+        tr td:last-child { border-radius: 0 12px 12px 0; border-right: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        .delete-btn {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .delete-btn:hover {
+            background: #ef4444;
+            color: white;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+        }
+        .loader { margin: 40px auto; width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1); border-top-color: #38bdf8; border-radius: 50%; animation: spin 1s infinite linear; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<div class="admin-dashboard">
+    <aside class="admin-sidebar">
+        <div class="admin-brand">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMzOGJkZjg7c3RvcC1vcGFjaXR5OjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNTYzZWI7c3RvcC1vcGFjaXR5OjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjAgODBMMjAgMzBDMjAgMjAgMzAgMjAgNDAgMjBMNTAgMjBMNTAgNDBMNDAgNDBMNDAgODBaIiBmaWxsPSJ1cmwoI2cpIi8+PHBhdGggZD0iTTgwIDIwTDgwIDcwQzgwIDgwIDcwIDgwIDYwIDgwTDUwIDgwTDUwIDYwTDYwIDYwTDYwIDIwWiIgZmlsbD0idXJsKCNnKSIvPjxwYXRoIGQ9Ik0zNSA0MGgzMGM1IDAgOCAzIDggOHYxNWMwIDUgLTMgOCAtOCA4aC01djEwbC0xMCAtMTBoLTEwYy01IDAgLTggLTMgLTggLTh2LTE1YzAgLTUgMyAtOCA4IC04eiIgZmlsbD0iIzM4YmRmOCIvPjxjaXJjbGUgY3g9IjQzIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==" alt="NexusChat Logo">
+            Admin Panel
+        </div>
+        <nav class="admin-nav">
+            <button class="nav-btn active" onclick="switchTab('users')">👥 Users Database</button>
+            <button class="nav-btn" onclick="switchTab('messages')">💬 All Messages</button>
+        </nav>
+    </aside>
+
+    <main class="admin-content">
+        <div class="header-top">
+            <div style="display:flex; align-items:center;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMzOGJkZjg7c3RvcC1vcGFjaXR5OjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNTYzZWI7c3RvcC1vcGFjaXR5OjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjAgODBMMjAgMzBDMjAgMjAgMzAgMjAgNDAgMjBMNTAgMjBMNTAgNDBMNDAgNDBMNDAgODBaIiBmaWxsPSJ1cmwoI2cpIi8+PHBhdGggZD0iTTgwIDIwTDgwIDcwQzgwIDgwIDcwIDgwIDYwIDgwTDUwIDgwTDUwIDYwTDYwIDYwTDYwIDIwWiIgZmlsbD0idXJsKCNnKSIvPjxwYXRoIGQ9Ik0zNSA0MGgzMGM1IDAgOCAzIDggOHYxNWMwIDUgLTMgOCAtOCA4aC01djEwbC0xMCAtMTBoLTEwYy01IDAgLTggLTMgLTggLTh2LTE1YzAgLTUgMyAtOCA4IC04eiIgZmlsbD0iIzM4YmRmOCIvPjxjaXJjbGUgY3g9IjQzIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNTUuNSIgcj0iMi41IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==" alt="Logo" style="width: 32px; height: 32px; margin-right: 15px; border-radius: 8px; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);">
+                <h1>MongoDB Control Center</h1>
+            </div>
+        </div>
+
+        <div id="users-panel" class="data-panel active">
+            <h2>Registered Users</h2>
+            <p>Manage all users within the MongoDB database.</p>
+            <div id="users-container"><div class="loader"></div></div>
+        </div>
+
+        <div id="messages-panel" class="data-panel">
+            <h2>Global Messages</h2>
+            <p>Manage message records across all rooms.</p>
+            <div id="messages-container"><div class="loader"></div></div>
+        </div>
+    </main>
+</div>
+
+<script>
+    async function loadData() {
+        try {
+            // Load Users
+            const usersRes = await fetch('/api/admin/users');
+            const users = await usersRes.json();
+            const uHtml = `
+                <table>
+                    <thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Online</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        ${users.map(u => `
+                            <tr>
+                                <td>${u._id}</td>
+                                <td><strong>${u.username}</strong></td>
+                                <td>${u.email}</td>
+                                <td>${u.isOnline ? '<span style="color:#22c55e">Yes</span>' : '<span style="color:#94a3b8">No</span>'}</td>
+                                <td><button class="delete-btn" onclick="deleteRecord('users', '${u._id}')">Delete</button></td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            document.getElementById('users-container').innerHTML = users.length ? uHtml : '<p>No users found.</p>';
+
+            // Load Messages
+            const msgRes = await fetch('/api/admin/messages');
+            const messages = await msgRes.json();
+            const mHtml = `
+                <table>
+                    <thead><tr><th>Room</th><th>Sender</th><th>Content</th><th>Date</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        ${messages.map(m => `
+                            <tr>
+                                <td><span style="background:rgba(255,255,255,0.1);padding:4px 8px;border-radius:4px;"># ${m.room}</span></td>
+                                <td><strong>${m.senderName || 'Unknown'}</strong></td>
+                                <td>${m.content}</td>
+                                <td>${new Date(m.createdAt).toLocaleString()}</td>
+                                <td><button class="delete-btn" onclick="deleteRecord('messages', '${m._id}')">Delete</button></td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            document.getElementById('messages-container').innerHTML = messages.length ? mHtml : '<p>No messages found.</p>';
+        } catch (err) {
+            console.error(err);
+            document.getElementById('users-container').innerHTML = '<p style="color:#ef4444">Error loading data.</p>';
+        }
+    }
+
+    async function deleteRecord(type, id) {
+        if (!confirm('Are you sure you want to delete this record entirely from MongoDB?')) return;
+        try {
+            const res = await fetch(`/api/admin/${type}/${id}`, { method: 'DELETE' });
+            if (res.ok) {
+                loadData(); // refresh
+            } else {
+                alert('Failed to delete');
+            }
+        } catch (err) {
+            alert('Error deleting');
+        }
+    }
+
+    function switchTab(tab) {
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.nav-btn[onclick="switchTab('${tab}')"]`).classList.add('active');
+        
+        document.querySelectorAll('.data-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById(`${tab}-panel`).classList.add('active');
+    }
+
+    // Init
+    loadData();
+</script>
+</body>
+</html>
